@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode/
+
+# Generated images
+*.png
+*.bmp
+
+# Generated MAG
+*.MAG
+*.mag
+
+# Windows
+Thumbs.db
+
+!docs/*.png
