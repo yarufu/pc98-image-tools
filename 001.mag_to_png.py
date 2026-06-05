@@ -102,11 +102,7 @@ def read_mag_header(data: bytes) -> dict:
     }
 
 
-def read_palette_16(data: bytes, bin_head: int) -> list[tuple[int, int, int]]:
-    """
-    MAGのパレットは G,R,B の順で16色分。
-    PNG/Pillow用に R,G,B へ戻す。
-    """
+def read_palette_16(data: bytes, bin_head: int):
     palette = []
     pal_off = bin_head + 32
 
@@ -114,6 +110,11 @@ def read_palette_16(data: bytes, bin_head: int) -> list[tuple[int, int, int]]:
         g = data[pal_off + i * 3 + 0]
         r = data[pal_off + i * 3 + 1]
         b = data[pal_off + i * 3 + 2]
+
+        g = (g >> 4) * 17
+        r = (r >> 4) * 17
+        b = (b >> 4) * 17
+
         palette.append((r, g, b))
 
     return palette

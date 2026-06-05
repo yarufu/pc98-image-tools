@@ -82,11 +82,14 @@ def build_mag_palette_grb(palette_rgb: list[tuple[int, int, int]]) -> bytes:
     out = bytearray()
     for i in range(MAX_COLORS):
         r, g, b = palette_rgb[i]
-        out.append(max(0, min(255, int(g))))
-        out.append(max(0, min(255, int(r))))
-        out.append(max(0, min(255, int(b))))
+        out.append(rgb8_to_mag8(g))
+        out.append(rgb8_to_mag8(r))
+        out.append(rgb8_to_mag8(b))
     return bytes(out)
 
+def rgb8_to_mag8(c: int) -> int:
+    c4 = (c * 15 + 127) // 255
+    return c4 * 17
 
 def make_groups(img: Image.Image) -> list[list[tuple[int, int, int, int]]]:
     width, height = img.size

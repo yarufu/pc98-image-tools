@@ -172,7 +172,7 @@ def write_preview(path: Path, colors: list[dict]) -> None:
         i = c["index"]
         x = margin + (i % cols) * cell_w
         y = margin + (i // cols) * cell_h
-        rgb = (c["r"], c["g"], c["b"])
+        rgb = (c["r4"] * 17, c["g4"] * 17, c["b4"] * 17)
         draw.rectangle([x, y, x + cell_w - 1, y + cell_h - 1], fill=rgb)
         draw.rectangle([x, y, x + cell_w - 1, y + cell_h - 1], outline=(0, 0, 0))
 
