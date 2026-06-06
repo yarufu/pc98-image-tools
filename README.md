@@ -70,6 +70,7 @@ python 003.mag_palette_dump.py input.MAG
 
 ## 動作環境
 
+* Windows 11
 * Python 3
 * Pillow（画像処理ライブラリ）
 
